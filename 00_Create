@@ -1,0 +1,24 @@
+mkdir epic-nfts
+cd epic-nfts
+npm init -y
+npm install --save-dev hardhat
+
+//No use audit, this leads to new problems in installation.
+
+//Get sample project working!
+npx hardhat
+
+
+//Get openzeppelin
+npm install @openzeppelin/contracts
+
+
+//run
+npx hardhat run scripts/sample-script.js
+
+//You also deployed a smart contract to a local blockchain.
+    //Hardhat compiles your smart contract from solidity to bytecode.
+    //Hardhat will spin up a "local blockchain" on your computer. It's like a mini, test version of Ethereum running on your computer to help you quickly test stuff!
+    //Hardhat will then "deploy" your compiled contract to your local blockchain. That's that address you see at the end there. It's our deployed contract, on our mini version of Ethereum.
+    //Greeter.sol which is the smart contract and sample-script.js which actually runs the contract.
+
