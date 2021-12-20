@@ -1,0 +1,58 @@
+//deploy.js under the scripts folder. 
+
+deploy.js
+....................................
+const main = async () => {
+  const nftContractFactory = await hre.ethers.getContractFactory('MyEpicNFT');
+  const nftContract = await nftContractFactory.deploy();
+  await nftContract.deployed();
+  console.log("Contract deployed to:", nftContract.address);
+
+  // Call the function.
+  let txn = await nftContract.makeAnEpicNFT()
+  // Wait for it to be mined.
+  await txn.wait()
+  console.log("Minted NFT #1")
+
+  txn = await nftContract.makeAnEpicNFT()
+  // Wait for it to be mined.
+  await txn.wait()
+  console.log("Minted NFT #2")
+};
+
+const runMain = async () => {
+  try {
+    await main();
+    process.exit(0);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
+runMain();
+
+
+
+hardhat.config.js
+...................................
+require('@nomiclabs/hardhat-waffle');
+
+module.exports = {
+  solidity: '0.8.0',
+  networks: {
+    rinkeby: {
+      url: 'YOUR_ALCHEMY_API_URL',
+      accounts: ['YOUR_PRIVATE_RINKEBY_ACCOUNT_KEY'],
+    },
+  },
+};
+
+
+npx hardhat run scripts/deploy.js --network rinkeby
+
+
+
+//View on OpenSea
+Head to testnets.opensea.io. Search for your contract address which is the address we deployed to that you can find in your terminal, 
+Don't click enter, click the collection itself when it comes up in the search.
