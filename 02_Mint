@@ -1,0 +1,97 @@
+MyEpicNFT.sol
+....................................
+pragma solidity ^0.8.0;
+
+// We first import some OpenZeppelin Contracts.
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
+import "hardhat/console.sol";
+
+// We inherit the contract we imported. This means we'll have access
+// to the inherited contract's methods.
+contract MyEpicNFT is ERC721URIStorage {
+  // Magic given to us by OpenZeppelin to help us keep track of tokenIds.
+  using Counters for Counters.Counter;
+  Counters.Counter private _tokenIds;
+
+  // We need to pass the name of our NFTs token and it's symbol.
+  constructor() ERC721 ("SquareNFT", "SQUARE") {
+    console.log("This is my NFT contract. Woah!");
+  }
+
+  // A function our user will hit to get their NFT.
+  function makeAnEpicNFT() public {
+     // Get the current tokenId, this starts at 0.
+    uint256 newItemId = _tokenIds.current();
+
+     // Actually mint the NFT to the sender using msg.sender.
+    _safeMint(msg.sender, newItemId);
+
+    // Set the NFTs data.
+    _setTokenURI(newItemId, "https://jsonkeeper.com/b/RUUS");
+
+    // Increment the counter for when the next NFT is minted.
+    _tokenIds.increment();
+  }
+}
+
+
+
+
+
+//tokenURI and running locally.
+The tokenURI is where the actual NFT data lives. And it usually links to a JSON file called the metadata that looks something like this:
+
+
+{
+    "name": "Spongebob Cowboy Pants",
+    "description": "A silent hero. A watchful protector.",
+    "image": "https://i.imgur.com/v7U019j.png"
+}
+
+
+
+We can copy the Spongebob Cowboy Pants JSON metadata above and paste it into this website. 
+This website is just an easy place for people to host JSON data and we'll be using it to keep our NFT data for now. 
+Once you click "Save" you'll get a link to the JSON file. (For example, mines is https://jsonkeeper.com/b/RUUS). 
+Be sure to test your link out and be sure it all looks good!
+
+
+run.js
+.............................
+const main = async () => {
+  const nftContractFactory = await hre.ethers.getContractFactory('MyEpicNFT');
+  const nftContract = await nftContractFactory.deploy();
+  await nftContract.deployed();
+  console.log("Contract deployed to:", nftContract.address);
+
+  // Call the function.
+  let txn = await nftContract.makeAnEpicNFT()
+  // Wait for it to be mined.
+  await txn.wait()
+
+  // Mint another NFT for fun.
+  txn = await nftContract.makeAnEpicNFT()
+  // Wait for it to be mined.
+  await txn.wait()
+
+};
+
+const runMain = async () => {
+  try {
+    await main();
+    process.exit(0);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
+runMain();
+
+
+npx hardhat run scripts/run.js
+
+
+
+
