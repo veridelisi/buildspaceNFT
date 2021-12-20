@@ -1,0 +1,51 @@
+// Go ahead and delete the file sample-test.js under test.  
+// Also, delete sample-script.js under scripts. 
+// Then, delete Greeter.sol under contracts. 
+// Don't delete the actual folders!
+
+MyEpicNFT.sol
+.......................
+// SPDX-License-Identifier: UNLICENSED
+
+pragma solidity ^0.8.0;
+
+import "hardhat/console.sol";
+
+contract MyEpicNFT {
+    constructor() {
+        console.log("This is my NFT contract. Whoa!");
+    }
+}
+
+
+//Go into the scripts directory and make a file named run.js
+
+run.js
+................................
+const main = async () => {
+  const nftContractFactory = await hre.ethers.getContractFactory('MyEpicNFT');
+  const nftContract = await nftContractFactory.deploy();
+  await nftContract.deployed();
+  console.log("Contract deployed to:", nftContract.address);
+};
+
+const runMain = async () => {
+  try {
+    await main();
+    process.exit(0);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
+runMain();
+
+
+
+
+npx hardhat run scripts/run.js
+
+
+
+
