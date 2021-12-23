@@ -73,7 +73,8 @@ NOW WE CHANGE THIS
 
 But wait — where will our fancy new JSON file go? Right now, we host it on this random website. 
 If that website goes down, our beautiful NFT is gone forever! 
-Here's what we're going to do. We're going to base64 encode our entire JSON file. Just like we encoded our SVG.
+Here's what we're going to do. We're going to base64 encode our entire JSON file. 
+Just like we encoded our SVG.
 https://www.utilities-online.info/base64
 Paste in your full JSON metadata with the base64 encoded SVG (should look sorta like what I have above) and then click "encode" to get you encoded JSON.
 
