@@ -1,0 +1,25 @@
+What are SVGs
+
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350">
+    <style>.base { fill: white; font-family: serif; font-size: 14px; }</style>
+    <rect width="100%" height="100%" fill="black" />
+    <text x="50%" y="50%" class="base" dominant-baseline="middle" text-anchor="middle">EpicLordHamburger</text>
+</svg>
+
+
+Head to this website (https://www.svgviewer.dev/) and paste in the code above to see it. 
+
+
+
+Next, we want a way to somehow get this data in our NFT without hosting it somewhere like imgur (which can go down or die at any moment!). Head to this website.
+https://www.utilities-online.info/base64
+Paste in your full SVG code above and then click "encode" to get your base64 encoded SVG. Now, ready for some magic? Open a new tab. And in the URL bar paste this:
+
+
+
+data:image/svg+xml;base64,INSERT_YOUR_BASE64_ENCODED_SVG_HERE
+
+
+We turned our SVG code into a nice string :). base64 is basically an accepted standard for encoding data into a string. So when we say data:image/svg+xml;base64 
+it's basically saying, "Hey, I'm about to give you base64 encoded data please process it as a SVG, thank you!".
+Take that whole string data:image/svg+xml;base64,INSERT_YOUR_BASE64_ENCODED_SVG_HERE and paste it in your browser's address bar and boom you'll see the SVG! 
