@@ -54,7 +54,7 @@ The tokenURI is where the actual NFT data lives. And it usually links to a JSON 
 We can copy the Spongebob Cowboy Pants JSON metadata above and paste it into this website. 
 This website is just an easy place for people to host JSON data and we'll be using it to keep our NFT data for now. 
 Once you click "Save" you'll get a link to the JSON file. (For example, mines is https://jsonkeeper.com/b/RUUS). 
-Be sure to test your link out and be sure it all looks good!
+Line 31, I done it, dont make anything.
 
 
 run.js
