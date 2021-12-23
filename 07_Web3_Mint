@@ -4,6 +4,7 @@
  
  Be sure to import it at the top using 
  import { ethers } from "ethers";
+ import MyEpicNFT from './utils/MyEpicNFT.json';
  in App.js
  
  
@@ -25,7 +26,7 @@
     if (ethereum) {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
-      const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, myEpicNft.abi, signer);
+      const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, MyEpicNFT.abi, signer);
 
       console.log("Going to pop wallet now to pay gas...")
       let nftTxn = await connectedContract.makeAnEpicNFT();
