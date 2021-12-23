@@ -1,3 +1,28 @@
+Remember !
+
+We have NFT information as json
+
+
+//tokenURI and running locally.
+The tokenURI is where the actual NFT data lives. And it usually links to a JSON file called the metadata that looks something like this:
+
+
+{
+    "name": "Spongebob Cowboy Pants",
+    "description": "A silent hero. A watchful protector.",
+    "image": "https://i.imgur.com/v7U019j.png"
+}
+
+we short it as
+
+https://jsonkeeper.com/b/RUUS
+
+
+Now !
+
+
+
+
 What are SVGs
 
 <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350">
