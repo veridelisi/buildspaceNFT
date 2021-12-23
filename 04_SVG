@@ -23,3 +23,48 @@ data:image/svg+xml;base64,INSERT_YOUR_BASE64_ENCODED_SVG_HERE
 We turned our SVG code into a nice string :). base64 is basically an accepted standard for encoding data into a string. So when we say data:image/svg+xml;base64 
 it's basically saying, "Hey, I'm about to give you base64 encoded data please process it as a SVG, thank you!".
 Take that whole string data:image/svg+xml;base64,INSERT_YOUR_BASE64_ENCODED_SVG_HERE and paste it in your browser's address bar and boom you'll see the SVG! 
+
+
+Remember
+https://jsonkeeper.com/b/RUUS
+
+we  keep
+
+{
+    "name": "EpicLordHamburger",
+    "description": "An NFT from the highly acclaimed square collection",
+    "image": "https://i.imgur.com/v7U019j.png"
+}
+
+NOW WE CHANGE THIS
+
+{
+    "name": "EpicLordHamburger",
+    "description": "An NFT from the highly acclaimed square collection",
+    "image": "data:image/svg+xml;base64,INSERT_YOUR_BASE64_ENCODED_SVG_HERE"
+}
+
+
+
+But wait — where will our fancy new JSON file go? Right now, we host it on this random website. 
+If that website goes down, our beautiful NFT is gone forever! 
+Here's what we're going to do. We're going to base64 encode our entire JSON file. Just like we encoded our SVG.
+https://www.utilities-online.info/base64
+Paste in your full JSON metadata with the base64 encoded SVG (should look sorta like what I have above) and then click "encode" to get you encoded JSON.
+
+Open a new tab. And in the URL bar paste this:
+
+data:application/json;base64,INSERT_YOUR_BASE64_ENCODED_JSON_HERE
+
+
+MyEpicNFT.sol
+
+We just need to change one line.Before we used jsonkeeper, now we use base 64
+_setTokenURI(newItemId, "data:application/json;base64,INSERT_BASE_64_ENCODED_JSON_HERE")
+
+
+npx hardhat run scripts/deploy.js --network rinkeby
+
+
+
+
